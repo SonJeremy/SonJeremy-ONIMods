@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyTitle>CustomableFood</AssemblyTitle>
+    <FileVersion>1.0.0.0</FileVersion>
+    <RootNamespace>SonJeremy.CustomableFood</RootNamespace>
+    <Description>Customize Food Rot Time And More</Description>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <LastWorkingBuild>493472</LastWorkingBuild>
+    <Platforms>Vanilla;Mergedown</Platforms>
+  </PropertyGroup>
+	<ItemGroup>
+		<Reference Include="Ionic.Zip" HintPath="$(GameFolderActive)/Ionic.Zip.dll" />
+		<Reference Include="com.rlabrecque.steamworks.net" HintPath="$(GameFolderActive)/com.rlabrecque.steamworks.net.dll" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Food.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyTitle>TileAtmoSensor</AssemblyTitle>
+    <FileVersion>1.0.0.0</FileVersion>
+    <RootNamespace>SonJeremy.TileAtmoSensor</RootNamespace>
+    <Description>Atmo Sensor As A Tile.!</Description>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <LastWorkingBuild>493472</LastWorkingBuild>
+    <Platforms>Vanilla;Mergedown</Platforms>
+  </PropertyGroup>
+	<ItemGroup>
+		<None Include="anim\assets\atmo_tile_anim.bytes" />
+		<None Include="anim\assets\atmo_tile_build.bytes" />
+	</ItemGroup>
+</Project>

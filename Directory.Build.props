@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <Import Condition=" !Exists('Directory.Build.props.user') " Project="Directory.Build.props.default" />
+  <Import Condition=" Exists('Directory.Build.props.user') " Project="Directory.Build.props.user" />
+
+  <ItemDefinitionGroup>
+    <Reference Private="False" />
+    <ProjectReference Private="True" />
+  </ItemDefinitionGroup>
+
+  <ItemGroup Condition=" '$(PLibCore)' != 'true' ">
+    <PackageReference Include="ILRepack.MSBuild.Task" Version="2.0.13" Private="True" PrivateAssets="all" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Mergedown' ">
+    <GameFolderActive>$(GameFolderMergedown)</GameFolderActive>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' != 'Mergedown' ">
+    <GameFolderActive>$(GameFolderLegacy)</GameFolderActive>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(UsePublicized)' == 'true' " >
+    <PubliciseInputAssemblies Include="$(GameFolderActive)/Assembly-CSharp.dll;
+      $(GameFolderActive)/Assembly-CSharp-firstpass.dll"/>
+    <Reference Include="Assembly-CSharp_public" HintPath="../public-lib/Assembly-CSharp_public.dll" />
+    <Reference Include="Assembly-CSharp-firstpass_public" HintPath="../public-lib/Assembly-CSharp-firstpass_public.dll" />
+    <PackageReference Include="Aze.Publicise.MSBuild.Task" Version="1.1.0"/>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(UsePublicized)' != 'true' " >
+    <Reference Include="Assembly-CSharp" HintPath="$(GameFolderActive)/Assembly-CSharp.dll" />
+    <Reference Include="Assembly-CSharp-firstpass" HintPath="$(GameFolderActive)/Assembly-CSharp-firstpass.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony" HintPath="$(GameFolderActive)/0Harmony.dll" />
+    <Reference Include="FMODUnity" HintPath="$(GameFolderActive)/FMODUnity.dll" />
+    <Reference Include="Newtonsoft.Json" HintPath="$(GameFolderActive)/Newtonsoft.Json.dll" />
+    <Reference Include="UnityEngine" HintPath="$(GameFolderActive)/UnityEngine.dll" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(GameFolderActive)/UnityEngine.CoreModule.dll" />
+    <Reference Include="UnityEngine.ImageConversionModule" HintPath="$(GameFolderActive)/UnityEngine.ImageConversionModule.dll" />
+    <Reference Include="UnityEngine.InputLegacyModule" HintPath="$(GameFolderActive)/UnityEngine.InputLegacyModule.dll" />
+    <Reference Include="Unity.TextMeshPro" HintPath="$(GameFolderActive)/Unity.TextMeshPro.dll" />
+    <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(GameFolderActive)/UnityEngine.TextRenderingModule.dll" />
+    <Reference Include="UnityEngine.UI" HintPath="$(GameFolderActive)/UnityEngine.UI.dll" />
+    <Reference Include="UnityEngine.UIModule" HintPath="$(GameFolderActive)/UnityEngine.UIModule.dll" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(UsesPLib)' != 'false' ">
+    <ProjectReference Include="../PLibCore/PLibCore.csproj" />
+    <ProjectReference Include="../PLibActions/PLibActions.csproj" />
+    <ProjectReference Include="../PLibAVC/PLibAVC.csproj" />
+    <ProjectReference Include="../PLibBuildings/PLibBuildings.csproj" />
+    <ProjectReference Include="../PLibDatabase/PLibDatabase.csproj" />
+    <ProjectReference Include="../PLibLighting/PLibLighting.csproj" />
+    <ProjectReference Include="../PLibOptions/PLibOptions.csproj" />
+    <ProjectReference Include="../PLibUI/PLibUI.csproj" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Mergedown' ">
+    <DefineConstants>MERGEDOWN</DefineConstants>
+    <APIVersion>2</APIVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Vanilla' ">
+    <DefineConstants>LEGACY</DefineConstants>
+    <APIVersion>1</APIVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(UsesPLib)' == 'true' ">
+    <AllowedReferenceRelatedFileExtensions>.yaml</AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Product>PeterHanONIMods</Product>
+    <Authors>Peter Han</Authors>
+    <Copyright>Copyright ©Peter Han 2021</Copyright>
+    <TargetFramework>net471</TargetFramework>
+    <SupportedContent>VANILLA_ID,EXPANSION1_ID</SupportedContent>
+    <LastWorkingBuild>0</LastWorkingBuild>
+    <DistributeMod>true</DistributeMod>
+    <ArchivedVersionPath></ArchivedVersionPath>
+    <UsePublicized>false</UsePublicized>
+    <PLibVersion>4.13.0.0</PLibVersion>
+  </PropertyGroup>
+</Project>
